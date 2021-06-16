@@ -18,17 +18,20 @@ import java.util.List;
 
 public class NotesListFragment extends Fragment {
 
-    public static NotesListFragment newInstance(String param1) {
+    private boolean isLandscape;
+
+    public static NotesListFragment newInstance(Note note) {
         NotesListFragment fragment = new NotesListFragment();
-        Bundle args = new Bundle();
+        //Bundle args = new Bundle();
         //args.putString(ARG_PARAM1, param1);
-        fragment.setArguments(args);
+        //fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isLandscape = getResources().getBoolean(R.bool.isLandscape);
         if (getArguments() != null) {
             //    mParam1 = getArguments().getString(ARG_PARAM1);
         }
@@ -69,7 +72,26 @@ public class NotesListFragment extends Fragment {
         }
     }
 
-    public void showNoteDetails(Note note) {
+    private void showNoteDetails(Note note) {
+        if(isLandscape){
+            showNoteDetailsLand(note);
+        }else {
+            showNoteDetailsPort(note);
+        }
+    }
+
+    private void showNoteDetailsLand(Note note){
+        NoteDetailFragment noteDetailFragment = NoteDetailFragment.newInstance();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(NoteDetailFragment.KEY_ARG, note);
+        noteDetailFragment.setArguments(bundle);
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, noteDetailFragment)
+                .commit();
+    }
+
+    private void showNoteDetailsPort(Note note){
         Context context = getActivity();
         if (context != null) {
             Intent intent = new Intent(context, DetailNoteActivity.class);
@@ -77,4 +99,6 @@ public class NotesListFragment extends Fragment {
             startActivity(intent);
         }
     }
+
+
 }
