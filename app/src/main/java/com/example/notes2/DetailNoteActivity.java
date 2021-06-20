@@ -22,19 +22,12 @@ public class DetailNoteActivity extends AppCompatActivity {
 
         if(savedInstanceState==null){
             NoteDetailFragment noteDetailFragment = new NoteDetailFragment();
-            noteDetailFragment.setArguments(getIntent().getExtras());
-            //Bundle bundle = getIntent().getExtras();
-            //Note note = (Note)bundle.getSerializable(NoteDetailFragment.KEY_ARG);
-            noteDetailFragment.newInstance();
+            Bundle bundle = getIntent().getExtras();
+            noteDetailFragment.setArguments(bundle);
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, noteDetailFragment)
                     .commit();
         }
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
     }
 }

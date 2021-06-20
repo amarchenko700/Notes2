@@ -36,8 +36,7 @@ public class NotesListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_notes_list, container, false);
     }
 
@@ -47,7 +46,7 @@ public class NotesListFragment extends Fragment {
         if (savedInstanceState == null) {
             initListNotes(view);
         }else {
-            Note note = (Note)savedInstanceState.getSerializable(NoteDetailFragment.KEY_ARG);
+            note = (Note)savedInstanceState.getSerializable(NoteDetailFragment.KEY_ARG);
             initListNotes(view);
             showNoteDetails(note);
         }
@@ -86,7 +85,8 @@ public class NotesListFragment extends Fragment {
     }
 
     private void showNoteDetailsLand(Note note) {
-        NoteDetailFragment noteDetailFragment = NoteDetailFragment.newInstance();
+        //NoteDetailFragment noteDetailFragment = NoteDetailFragment.newInstance();
+        NoteDetailFragment noteDetailFragment = new NoteDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(NoteDetailFragment.KEY_ARG, note);
         noteDetailFragment.setArguments(bundle);

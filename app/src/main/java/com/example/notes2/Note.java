@@ -1,7 +1,5 @@
 package com.example.notes2;
 
-import android.widget.DatePicker;
-
 import java.io.Serializable;
 import java.util.Date;
 
