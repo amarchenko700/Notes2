@@ -3,4 +3,5 @@
     <dimen name="textSizeNameNote">30sp</dimen>
     <dimen name="textSizeDescriptionNote">25sp</dimen>
     <dimen name="textSizeCreatedDate">20sp</dimen>
+    <dimen name="textSizeDateCreatedChange">25sp</dimen>
 </resources>

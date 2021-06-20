@@ -1,6 +1,7 @@
 package com.example.notes2;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Note implements Serializable {
@@ -24,5 +25,9 @@ public class Note implements Serializable {
 
     public Date getDateCreate() {
         return dateCreate;
+    }
+
+    public void setDateCreate(Date dateCreate) {
+        this.dateCreate = dateCreate;
     }
 }

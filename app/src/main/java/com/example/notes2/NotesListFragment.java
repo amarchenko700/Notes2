@@ -14,12 +14,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class NotesListFragment extends Fragment {
 
+    private static final String KEY_NOTES = "KEY_NOTES";
     private boolean isLandscape;
     private Note note;
+    private List<Note> notes;
 
     public static NotesListFragment newInstance(Note note) {
         NotesListFragment fragment = new NotesListFragment();
@@ -32,6 +35,11 @@ public class NotesListFragment extends Fragment {
         isLandscape = getResources().getBoolean(R.bool.isLandscape);
         if (getArguments() != null) {
 
+        }
+        if(savedInstanceState == null){
+            notes = new NotesRepository().getNotes();
+        }else {
+            notes = (List<Note>) savedInstanceState.getSerializable(KEY_NOTES);
         }
     }
 
@@ -46,7 +54,7 @@ public class NotesListFragment extends Fragment {
         if (savedInstanceState == null) {
             initListNotes(view);
         }else {
-            note = (Note)savedInstanceState.getSerializable(NoteDetailFragment.KEY_ARG);
+            note = (Note)savedInstanceState.getSerializable(NoteDetailFragment.KEY_CURRENT_NOTE);
             initListNotes(view);
             showNoteDetails(note);
         }
@@ -56,9 +64,8 @@ public class NotesListFragment extends Fragment {
         LinearLayout linearLayout = (LinearLayout) view;
         // Оставляю для себя как пример на будущее
         //String[] namesNotes = getResources().getStringArray(R.array.namesNotes);
-        List<Note> namesNotes = new NotesRepository().getNotes();
         Context context = getContext();
-        for (Note currentNote : namesNotes) {
+        for (Note currentNote : notes) {
             if (context != null) {
                 TextView textView = new TextView(context);
                 textView.setText(currentNote.getNameNote());
@@ -88,7 +95,7 @@ public class NotesListFragment extends Fragment {
         //NoteDetailFragment noteDetailFragment = NoteDetailFragment.newInstance();
         NoteDetailFragment noteDetailFragment = new NoteDetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable(NoteDetailFragment.KEY_ARG, note);
+        bundle.putSerializable(NoteDetailFragment.KEY_CURRENT_NOTE, note);
         noteDetailFragment.setArguments(bundle);
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
@@ -100,7 +107,7 @@ public class NotesListFragment extends Fragment {
         Context context = getActivity();
         if (context != null) {
             Intent intent = new Intent(context, DetailNoteActivity.class);
-            intent.putExtra(NoteDetailFragment.KEY_ARG, note);
+            intent.putExtra(NoteDetailFragment.KEY_CURRENT_NOTE, note);
             startActivity(intent);
         }
     }
@@ -108,6 +115,7 @@ public class NotesListFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable(NoteDetailFragment.KEY_ARG, note);
+        outState.putSerializable(NoteDetailFragment.KEY_CURRENT_NOTE, note);
+        outState.putSerializable(KEY_NOTES, (Serializable) notes);
     }
 }
