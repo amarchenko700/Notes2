@@ -19,12 +19,10 @@ import java.util.List;
 public class NotesListFragment extends Fragment {
 
     private boolean isLandscape;
+    private Note note;
 
     public static NotesListFragment newInstance(Note note) {
         NotesListFragment fragment = new NotesListFragment();
-        //Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //fragment.setArguments(args);
         return fragment;
     }
 
@@ -33,7 +31,7 @@ public class NotesListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         isLandscape = getResources().getBoolean(R.bool.isLandscape);
         if (getArguments() != null) {
-            //    mParam1 = getArguments().getString(ARG_PARAM1);
+
         }
     }
 
@@ -46,7 +44,13 @@ public class NotesListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initListNotes(view);
+        if (savedInstanceState == null) {
+            initListNotes(view);
+        }else {
+            Note note = (Note)savedInstanceState.getSerializable(NoteDetailFragment.KEY_ARG);
+            initListNotes(view);
+            showNoteDetails(note);
+        }
     }
 
     private void initListNotes(View view) {
@@ -55,17 +59,18 @@ public class NotesListFragment extends Fragment {
         //String[] namesNotes = getResources().getStringArray(R.array.namesNotes);
         List<Note> namesNotes = new NotesRepository().getNotes();
         Context context = getContext();
-        for (Note note : namesNotes) {
+        for (Note currentNote : namesNotes) {
             if (context != null) {
                 TextView textView = new TextView(context);
-                textView.setText(note.getNameNote());
+                textView.setText(currentNote.getNameNote());
                 textView.setTextSize(30);
                 textView.setPadding(0, 20, 0, 20);
                 linearLayout.addView(textView);
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showNoteDetails(note);
+                        note = currentNote;
+                        showNoteDetails(currentNote);
                     }
                 });
             }
@@ -73,14 +78,14 @@ public class NotesListFragment extends Fragment {
     }
 
     private void showNoteDetails(Note note) {
-        if(isLandscape){
+        if (isLandscape) {
             showNoteDetailsLand(note);
-        }else {
+        } else {
             showNoteDetailsPort(note);
         }
     }
 
-    private void showNoteDetailsLand(Note note){
+    private void showNoteDetailsLand(Note note) {
         NoteDetailFragment noteDetailFragment = NoteDetailFragment.newInstance();
         Bundle bundle = new Bundle();
         bundle.putSerializable(NoteDetailFragment.KEY_ARG, note);
@@ -91,7 +96,7 @@ public class NotesListFragment extends Fragment {
                 .commit();
     }
 
-    private void showNoteDetailsPort(Note note){
+    private void showNoteDetailsPort(Note note) {
         Context context = getActivity();
         if (context != null) {
             Intent intent = new Intent(context, DetailNoteActivity.class);
@@ -100,5 +105,9 @@ public class NotesListFragment extends Fragment {
         }
     }
 
-
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(NoteDetailFragment.KEY_ARG, note);
+    }
 }

@@ -1,8 +1,10 @@
 package com.example.notes2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.ContactsContract;
 
 public class DetailNoteActivity extends AppCompatActivity {
@@ -29,5 +31,10 @@ public class DetailNoteActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container, noteDetailFragment)
                     .commit();
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 }

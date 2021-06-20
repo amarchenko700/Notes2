@@ -40,7 +40,10 @@ public class NoteDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView nameNoteTV = view.findViewById(R.id.nameNote);
         TextView descNoteTV = view.findViewById(R.id.descriptionNote);
+        TextView dateCreatedTV = view.findViewById(R.id.dateCreated);
+
         nameNoteTV.setText(note.getNameNote());
         descNoteTV.setText(note.getDesscriptionNote());
+        dateCreatedTV.setText(note.getDateCreate().toString());
     }
 }

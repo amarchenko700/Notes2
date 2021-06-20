@@ -10,16 +10,38 @@
         android:id="@+id/nameNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/textSizeNameNote"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        tools:text="Название заметки"/>
+        android:textSize="@dimen/textSizeNameNote"
+        tools:text="Название заметки" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textSize="@dimen/textSizeCreatedDate"
+            android:text="@string/dateCreatedText" />
+
+        <TextView
+            android:id="@+id/dateCreated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textSize="@dimen/textSizeCreatedDate"
+            tools:text="Дата создания" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/descriptionNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/textSizeDescriptionNote"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        tools:text="Текст заметки"/>
+        android:textSize="@dimen/textSizeDescriptionNote"
+        tools:text="Текст заметки" />
 
 </LinearLayout>
