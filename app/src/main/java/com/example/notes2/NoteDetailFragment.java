@@ -46,8 +46,7 @@ public class NoteDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_note_detail, container, false);
     }
 
@@ -62,6 +61,11 @@ public class NoteDetailFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     launcher.launch(note.getDateCreate());
+//                    getChildFragmentManager()
+//                            .beginTransaction()
+//                            .replace(R.id.changeDateCreateContainer, new ChangeDateCreateFragment())
+//                            .addToBackStack("changeDateCreated")
+//                            .commit();
                 }
             });
 
@@ -104,4 +108,9 @@ public class NoteDetailFragment extends Fragment {
 
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(KEY_CURRENT_NOTE, note);
+    }
 }

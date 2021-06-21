@@ -44,4 +44,10 @@
         android:textSize="@dimen/textSizeDescriptionNote"
         tools:text="Текст заметки" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/changeDateCreateContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
 </LinearLayout>

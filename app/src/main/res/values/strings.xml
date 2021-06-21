@@ -6,5 +6,10 @@
     <string name="textDateCreatedChange">Укажите дату создания</string>
     <string name="nameBtnOk">Ok</string>
     <string name="nameBthCancel">Отменить</string>
+    <string name="appTitle">Заметки</string>
+    <string name="about">О приложении</string>
+    <string name="find">Найти</string>
+    <string name="addNote">Добавить заметку</string>
+    <string name="aboutApp">Это мое приложенько и здесь его описание</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

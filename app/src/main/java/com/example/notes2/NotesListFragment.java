@@ -118,4 +118,15 @@ public class NotesListFragment extends Fragment {
         outState.putSerializable(NoteDetailFragment.KEY_CURRENT_NOTE, note);
         outState.putSerializable(KEY_NOTES, (Serializable) notes);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //getArguments()
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 }
