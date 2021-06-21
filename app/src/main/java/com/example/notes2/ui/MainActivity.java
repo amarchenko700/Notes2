@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.notes2.R;
 import com.example.notes2.fragments.AboutFragment;
+import com.example.notes2.fragments.NotesListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new NotesListFragment())
+                .commit();
 
     }
 
@@ -56,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.about:{
                 getSupportFragmentManager()
                     .beginTransaction()
-                    //.addToBackStack("aboutApp")
+                    .addToBackStack("aboutApp")
                     .replace(R.id.fragment_container, new AboutFragment())
                     .commit();
             }
