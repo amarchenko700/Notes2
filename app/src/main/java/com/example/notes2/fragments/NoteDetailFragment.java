@@ -1,4 +1,4 @@
-package com.example.notes2;
+package com.example.notes2.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.notes2.ui.ChangeDateCreateActivity;
+import com.example.notes2.domain.Note;
+import com.example.notes2.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

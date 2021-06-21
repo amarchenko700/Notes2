@@ -1,4 +1,6 @@
-package com.example.notes2;
+package com.example.notes2.domain;
+
+import com.example.notes2.domain.Note;
 
 import java.util.ArrayList;
 import java.util.List;

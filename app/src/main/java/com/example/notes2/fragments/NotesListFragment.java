@@ -1,4 +1,4 @@
-package com.example.notes2;
+package com.example.notes2.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.notes2.ui.DetailNoteActivity;
+import com.example.notes2.domain.Note;
+import com.example.notes2.domain.NotesRepository;
+import com.example.notes2.R;
 
 import java.io.Serializable;
 import java.util.List;

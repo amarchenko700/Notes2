@@ -1,4 +1,4 @@
-package com.example.notes2;
+package com.example.notes2.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+
+import com.example.notes2.R;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
