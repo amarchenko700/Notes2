@@ -1,11 +1,11 @@
-package com.example.notes2;
+package com.example.notes2.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.provider.ContactsContract;
+
+import com.example.notes2.R;
+import com.example.notes2.fragments.NoteDetailFragment;
 
 public class DetailNoteActivity extends AppCompatActivity {
 

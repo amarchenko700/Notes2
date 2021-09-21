@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NoteDetailFragment">
+    tools:context=".fragments.NoteDetailFragment">
 
     <TextView
         android:id="@+id/nameNote"
@@ -43,5 +43,11 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textSize="@dimen/textSizeDescriptionNote"
         tools:text="Текст заметки" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/changeDateCreateContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

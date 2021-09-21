@@ -1,4 +1,4 @@
-package com.example.notes2;
+package com.example.notes2.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.notes2.ui.ChangeDateCreateActivity;
+import com.example.notes2.domain.Note;
+import com.example.notes2.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,8 +50,7 @@ public class NoteDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_note_detail, container, false);
     }
 
@@ -62,6 +65,11 @@ public class NoteDetailFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     launcher.launch(note.getDateCreate());
+//                    getChildFragmentManager()
+//                            .beginTransaction()
+//                            .replace(R.id.changeDateCreateContainer, new ChangeDateCreateFragment())
+//                            .addToBackStack("changeDateCreated")
+//                            .commit();
                 }
             });
 
@@ -104,4 +112,9 @@ public class NoteDetailFragment extends Fragment {
 
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(KEY_CURRENT_NOTE, note);
+    }
 }
